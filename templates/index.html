@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damage Factor Chart</title>
+    <!-- Add Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Damage Factor vs Intensity</h1>
+    <div id="chart"></div>
+
+    <script>
+        // This will be used to fetch the chart data from the Flask backend
+        fetch('/chart-data', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "Intensity": ["Medium", "High"],  // Example filter, replace with actual values
+                "Region": ["North", "South"]  // Example filter, replace with actual values
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const graphData = JSON.parse(data);  // Parse the received chart data
+            Plotly.newPlot('chart', graphData.data, graphData.layout);
+        });
+    </script>
+</body>
+</html>
