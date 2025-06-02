@@ -19,7 +19,7 @@ df = df.rename(columns = {'Measure':'Hazard', 'Units':'Intensity Unit'})
 st.title("Damage Factor vs Intensity")
 
 # Specify the filter order explicitly
-filter_columns = ['Infrastructure', 'Infra_details', 'Measure', 'Units', 'Model']
+filter_columns = ['Infrastructure', 'Infra_details', 'Hazard', 'Intensity Unit', 'Model']
 
 # Sidebar filters
 st.sidebar.header("Filters")
