@@ -14,6 +14,8 @@ def load_data():
 df = load_data()
 #st.write("Columns in data:", list(df.columns))
 
+df = df.rename(columns = {'Measure':'Hazard', 'Units':'Intensity Unit'})
+
 st.title("Damage Factor vs Intensity")
 
 # Specify the filter order explicitly
